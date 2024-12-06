@@ -3,6 +3,6 @@
 preview='bat --decorations=always --style=numbers --color=always --theme=ansi {}'
 preview_window=border-left
 
-rg --files --no-ignore 2>/dev/null | \
-fzf --multi --keep-right --preview "$preview" --preview-window "$preview_window" | \
-xargs --no-run-if-empty --delimiter '\n' code -r
+rg --files --no-ignore --hidden --glob '!.git' 2>/dev/null |
+  fzf --multi --keep-right --preview "$preview" --preview-window "$preview_window" |
+  xargs --no-run-if-empty --delimiter '\n' code -r
